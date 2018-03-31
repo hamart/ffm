@@ -1,0 +1,14 @@
+version: '2'
+services:
+    ffm-app:
+        image: ffm
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://ffm-postgresql:5432/ffm
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    ffm-postgresql:
+        extends:
+            file: postgresql.yml
+            service: ffm-postgresql
